@@ -4,11 +4,11 @@
 # This is free software, licensed under the MIT License.
 # See /LICENSE for more information.
 #
-# https://github.com/darlexlin/docker-seafile-cli
-# Description: Build Docker for seafile-cli
+# https://github.com/darlexlin/docker-lnmp-nginx
+# Description: Build Docker for lnmp-nginx
 #
 
-name: Seafile Client For Command Only
+name: LNMP NGINX
 
 on:
   workflow_dispatch:
@@ -46,5 +46,5 @@ jobs:
           platforms: linux/amd64
           push: true
           tags: |
-            darlexlin/seafile-client:latest
-            darlexlin/seafile-client:${{ github.event.inputs.tag }}
+            darlexlin/lnmp-nginx:latest
+            darlexlin/lnmp-nginx:${{ github.event.inputs.tag }}

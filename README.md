@@ -1,2 +1,2 @@
-# docker-seafile-cli
-Docker For Seafile Client (Command Only ! )
+# docker-lnmp-nginx
+Docker For LNMP Nginx
