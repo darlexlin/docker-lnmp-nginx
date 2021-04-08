@@ -1,4 +1,4 @@
-FROM nginx:1.19.2
+FROM nginx:1.19.9-alpine-perl
 ENV TZ=Asia/Shanghai
 WORKDIR /etc/nginx/conf.d
 COPY sources.list /etc/apt
@@ -9,4 +9,4 @@ RUN apt-get update && \
     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 VOLUME /etc/nginx/conf.d
 EXPOSE 80 443
-CMD ["service nginx start","tail -f /dev/null"]
+CMD ["nginx" "-g" "daemon off;"]
