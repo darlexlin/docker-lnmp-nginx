@@ -1,7 +1,7 @@
 FROM nginx:1.19.9-alpine-perl
 ENV TZ=Asia/Shanghai
 WORKDIR /etc/nginx/conf.d
-COPY sources.list /etc/apt
+#COPY sources.list /etc/apt
 COPY ddns.conf /etc/nginx/conf.d
 RUN apt-get update && \
     apt-get install -y apt-utils vim && \
