@@ -19,9 +19,9 @@ RUN ln -s /etc/v2ray /config/v2ray && \
     ln -s /etc/nginx/conf.d /config/nginx
 
 #添加配置模板
-COPY proxy.conf /config/nginx
-COPY website.conf /config/nginx
-COPY reverse.conf /config/nginx
+#COPY proxy.conf /config/nginx
+#COPY website.conf /config/nginx
+#COPY reverse.conf /config/nginx
 
 ENTRYPOINT ["/docker-entrypoint.sh"]
 
