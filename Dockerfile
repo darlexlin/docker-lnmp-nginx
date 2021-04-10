@@ -4,13 +4,11 @@ ENV DEBIAN_FRONTEND noninteractive
 ENV PUID=1000 PGID=1000
 ENV TZ Asia/Shanghai
 
-#下载V2ray
+#下载并安装V2ray
 WORKDIR /root
-RUN wget -q -O v2ray.sh "https://raw.githubusercontent.com/v2fly/docker/master/v2ray.sh"
-
-#安装V2ray
 RUN set -ex && \
-    apk add --no-cache tzdata openssl ca-certificates --upgrade && \
+    apk add --no-cache wget tzdata openssl ca-certificates --upgrade && \
+    wget -q -O v2ray.sh "https://raw.githubusercontent.com/v2fly/docker/master/v2ray.sh" && \
     mkdir -p /etc/v2ray /usr/local/share/v2ray /var/log/v2ray && \
     chmod +x /root/v2ray.sh && \
     /root/v2ray.sh
