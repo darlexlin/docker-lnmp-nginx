@@ -23,9 +23,13 @@ COPY proxy.conf /config/nginx
 COPY website.conf /config/nginx
 COPY reverse.conf /config/nginx
 
+ENTRYPOINT ["/docker-entrypoint.sh"]
+
 #暴露工作目录与端口
 VOLUME /config
 EXPOSE 80
 EXPOSE 443
+
+STOPSIGNAL SIGQUIT
 
 CMD ["nginx", "-g", "daemon off;"]
