@@ -23,7 +23,7 @@ COPY proxy.conf /config/nginx
 COPY website.conf /config/nginx
 COPY reverse.conf /config/nginx
 
-#暴露
+#暴露工作目录与端口
 VOLUME /config
 EXPOSE 80
 EXPOSE 443
