@@ -9,7 +9,7 @@ WORKDIR /root
 RUN set -ex && \
     apk add --no-cache wget tzdata openssl ca-certificates --upgrade && \
     wget -q -O v2ray.sh "https://raw.githubusercontent.com/v2fly/docker/master/v2ray.sh" && \
-    mkdir -p /etc/v2ray /usr/local/share/v2ray /var/log/v2ray && \
+    mkdir -p /etc/v2ray /usr/local/share/v2ray /var/log/v2ray /config && \
     chmod +x /root/v2ray.sh && \
     /root/v2ray.sh
 
@@ -25,7 +25,6 @@ COPY reverse /config/nginx
 
 #暴露工作目录与端口
 VOLUME /config
-EXPOSE 80
-EXPOSE 443
+EXPOSE 80 443
 
 CMD ["nginx", "-g", "daemon off;"]
