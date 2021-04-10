@@ -27,4 +27,4 @@ COPY reverse.conf /config/nginx
 VOLUME /config
 EXPOSE 80 443
 
-CMD [ "nginx" "-g" "daemon off;" ]
+CMD ["nginx", "-g", "daemon off;"]
