@@ -15,8 +15,8 @@ RUN set -ex && \
 
 #绑定工作目录
 WORKDIR /config
-RUN ln -s /etc/v2ray /config/v2ray && \
-    ln -s /etc/nginx/conf.d /config/nginx
+RUN ln -sf /etc/v2ray /config/v2ray && \
+    ln -sf /etc/nginx/conf.d /config/nginx
 
 #添加配置模板
 COPY proxy /config/nginx
