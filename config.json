@@ -1,0 +1,37 @@
+{
+  "log": {
+        "access": "/var/log/v2ray/access.log",
+        "error": "/var/log/v2ray/error.log",
+        "loglevel": "warning"
+    },
+  "inbounds": [
+    {
+      "port":8888,
+      "listen": "127.0.0.1", //只监听 127.0.0.1，避免除本机外的机器探测到开放了 10000 端口
+      "tag": "VLESS-in", 
+      "protocol": "vless", 
+      "settings": {
+        "clients": [
+          {
+	  		"id":"de54a90c-9a71-11eb-a8b3-0242ac130003",
+            "alterId": 0
+          }
+        ],
+	    "decryption": "none"
+      }, 
+      "streamSettings": {
+        "network": "ws", 
+        "wsSettings": {
+	  "path":"/123456789/"
+        }
+      }
+    }
+  ], 
+  "outbounds": [
+    {
+      "protocol": "freedom", 
+      "settings": { }, 
+      "tag": "direct"
+    }
+  ]
+}

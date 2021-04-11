@@ -1,4 +1,4 @@
-﻿FROM nginx:mainline-alpine-perl
+FROM nginx:mainline-alpine-perl
 
 #ENV DEBIAN_FRONTEND noninteractive
 ENV PUID=1000 PGID=1000
@@ -22,7 +22,7 @@ RUN ln -sf /etc/v2ray /config/v2ray && \
 COPY proxy /config/nginx
 COPY website /config/nginx
 COPY reverse /config/nginx
-COPY config1.json /config/v2ray
+COPY config.json /config/v2ray
 
 #暴露工作目录与端口
 VOLUME /config
