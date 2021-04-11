@@ -22,7 +22,7 @@ RUN ln -sf /etc/v2ray /config/v2ray && \
 COPY proxy /config/nginx
 COPY website /config/nginx
 COPY reverse /config/nginx
-COPY config.json /config/v2ray
+COPY config1.json /config/v2ray
 
 #暴露工作目录与端口
 VOLUME /config
