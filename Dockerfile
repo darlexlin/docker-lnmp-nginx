@@ -27,4 +27,4 @@ COPY reverse /config/nginx
 VOLUME /config
 EXPOSE 80 443
 
-CMD ["nginx", "-g", "daemon off;"]
+CMD [ "/usr/bin/v2ray", "-config", "/etc/v2ray/config.json" ]
