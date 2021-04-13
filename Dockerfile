@@ -47,14 +47,12 @@ RUN set -ex && \
 #绑定工作目录
 WORKDIR /config
 RUN ln -sf /etc/v2ray /config/v2ray && \
-    ln -sf /etc/nginx/conf.d /config/nginx && \
-    mkdir -p /config/www  /config/cert  /config/mariadb
+    ln -sf /etc/nginx/conf.d /config/nginx
 
 #添加配置模板
-COPY proxy/ /config/www/proxy/
-COPY proxy.conf /config/nginx
-COPY website.conf /config/nginx
-COPY reverse.conf /config/nginx
+COPY proxy /config/nginx
+COPY website /config/nginx
+COPY reverse /config/nginx
 COPY config.json /config/v2ray
 
 #暴露工作目录与端口
