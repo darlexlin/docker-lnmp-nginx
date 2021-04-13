@@ -1,0 +1,3 @@
+#!/usr/bin/with-contenv bash
+
+exec /usr/bin/v2ray -config /config/v2ray/config.json

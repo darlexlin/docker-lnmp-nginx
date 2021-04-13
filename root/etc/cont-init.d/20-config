@@ -1,0 +1,31 @@
+#!/usr/bin/with-contenv bash
+
+# 创建文件夹
+mkdir -p \
+	/config/{nginx/site-confs,www/{default,proxy,website,reverse},log/nginx,keys,v2ray} \
+	/run \
+	/var/lib/nginx/tmp/client_body \
+	/var/tmp/nginx
+
+# 复制默认配置文件
+[[ ! -f /config/nginx/nginx.conf ]] && \
+	cp /defaults/nginx.conf /config/nginx/nginx.conf
+[[ ! -f /config/nginx/site-confs/default ]] && \
+	cp /defaults/default /config/nginx/site-confs/default
+	cp /defaults/proxy.conf /config/nginx/site-confs/proxy.conf && \
+        cp /defaults/reverse.conf /config/nginx/site-confs/reverse.conf && \
+        cp /defaults/website.conf /config/nginx/site-confs/website.conf
+[[ $(find /config/www/default -type f | wc -l) -eq 0 ]] && \
+	cp /defaults/index.html /config/www/default/index.html && \
+        cp /defaults/proxy/ /config/www/proxy
+[[ ! -f /config/v2ray/config.json ]] && \
+	cp /defaults/config.json /config/v2ray/config.json
+
+# permissions
+chown -R abc:abc \
+	/config \
+	/var/lib/nginx \
+	/var/tmp/nginx
+chmod -R g+w \
+	/config/{nginx,www}
+chmod -R 644 /etc/logrotate.d
