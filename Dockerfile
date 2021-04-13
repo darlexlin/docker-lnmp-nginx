@@ -50,6 +50,8 @@ RUN \
 
 #下载并安装V2ray
 WORKDIR /root
+ARG TARGETPLATFORM
+ARG TAG
 RUN set -ex && \
     apk add --no-cache wget tzdata openssl ca-certificates --upgrade && \
     wget -q -O v2ray.sh "https://raw.githubusercontent.com/v2fly/docker/master/v2ray.sh" && \
