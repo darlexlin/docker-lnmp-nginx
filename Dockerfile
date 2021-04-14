@@ -58,9 +58,10 @@ RUN set -ex && \
     wget -q -O v2ray.zip "https://github.com/v2fly/v2ray-core/releases/download/${TAG}/v2ray-linux-64.zip" && \
     unzip v2ray.zip && \
     chmod +x v2ray v2ctl && \
-    mv v2ray v2ctl /usr/bin/
-    mv geosite.dat geoip.dat /usr/local/share/v2ray/
-    mv config.json /etc/v2ray/config.json
+    mv v2ray v2ctl /usr/bin/ && \
+    mv geosite.dat geoip.dat /usr/local/share/v2ray/ && \
+    mv config.json /etc/v2ray/config.json && \
+    rm -rf /tmp/*
 
 #绑定工作目录
 WORKDIR /config
