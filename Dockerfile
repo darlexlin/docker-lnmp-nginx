@@ -4,16 +4,6 @@ FROM nginx:mainline-alpine-perl
 ENV PUID=1000 PGID=1000
 ENV TZ Asia/Shanghai
 
-#下载并安装V2ray
-WORKDIR /tmp
-# USER root
-RUN set -ex && \
-    apk add --no-cache wget tzdata openssl ca-certificates --upgrade && \
-    wget -q -O v2ray.sh "https://raw.githubusercontent.com/v2fly/docker/master/v2ray.sh" && \
-    mkdir -p /etc/v2ray /usr/local/share/v2ray /var/log/v2ray && \
-    chmod +x /tmp/v2ray.sh && \
-    /tmp/v2ray.sh "${TARGETPLATFORM}" "${TAG}"
-
 # 守护程序 s6 overlay 的版本
 ARG OVERLAY_VERSION="v2.2.0.3"
 ARG OVERLAY_ARCH="amd64"
@@ -58,7 +48,17 @@ RUN \
     rm -rf \
 	/tmp/*
 
-
+#下载并安装V2ray
+WORKDIR /root
+ARG TARGETPLATFORM="linux/amd64"
+ARG TAG="4.37.3"
+# USER root
+RUN set -ex && \
+    apk add --no-cache wget tzdata openssl ca-certificates --upgrade && \
+    wget -q -O v2ray.sh "https://raw.githubusercontent.com/v2fly/docker/master/v2ray.sh" && \
+    mkdir -p /etc/v2ray /usr/local/share/v2ray /var/log/v2ray && \
+    chmod +x /root/v2ray.sh && \
+    /root/v2ray.sh "${TARGETPLATFORM}" "${TAG}"
 
 #绑定工作目录
 WORKDIR /config
