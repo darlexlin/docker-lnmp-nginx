@@ -66,9 +66,10 @@ RUN \
 #绑定工作目录
 WORKDIR /config
 
-#添加本地文件
+#添加本地文件，赋予root权限
 COPY root/ /
-RUN chmod +x /etc/cont-init.d
+RUN chmod 755 /etc/cont-init.d && \
+    chown root:root /etc/cont-init.d
 
 #暴露工作目录与端口
 VOLUME /config
